@@ -1,0 +1,33 @@
+# Environnements virtuels & Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Dataset (à télécharger depuis Kaggle)
+data/
+chinese_mnist.csv
+
+# Version Moodle du README (conservée localement)
+/README.md
+
+# Fichiers de travail / internes au cours
+test.py
+result.txt
+Projets_ML.pdf
+
+# Fichiers temporaires LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.fdb_latexmk
+*.fls
+*.synctex.gz
