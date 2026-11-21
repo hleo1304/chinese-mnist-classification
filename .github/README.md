@@ -1,54 +1,54 @@
-# Classification de caractères chinois manuscrits (Chinese MNIST)
+# Handwritten Chinese Character Classification (Chinese MNIST)
 
-Étude comparative de quatre modèles de Machine Learning et Deep Learning pour la classification d'images en niveaux de gris de nombres manuscrits chinois (15 classes : chiffres de `0` à `9` et puissances de dix `10`, `100`, `1 000`, `10 000`, `10⁸`).
+A comparative study of four Machine Learning and Deep Learning models for classifying grayscale images of handwritten Chinese numerals (15 classes: digits `0` through `9` and powers of ten `10`, `100`, `1,000`, `10,000`, `10⁸`).
 
-Ce projet met en évidence les limites de l'aplatissement 1D des images sur les classifieurs classiques (**Random Forest**, **MLP**, **SVM**) et démontre le gain apporté par un **réseau de neurones convolutif 2D (CNN)**, atteignant **97,60 % d'accuracy** sur le jeu de test.
-
----
-
-## Aperçu du dataset
-
-![Aperçu des 15 classes du jeu Chinese MNIST](../results/apercu_dataset.png)
+This project highlights the limitations of 1D image flattening on classical classifiers (**Random Forest**, **MLP**, **SVM**) and demonstrates the performance gain achieved by a **2D Convolutional Neural Network (CNN)**, reaching **97.60% accuracy** on the test set.
 
 ---
 
-## Résultats obtenus (sur 3 000 images de test)
+## Dataset Overview
 
-| Modèle | Entrée | Hyperparamètres retenus | Temps d'entraînement | Accuracy test | F1-score macro |
+![Overview of the 15 classes in the Chinese MNIST dataset](../results/apercu_dataset.png)
+
+---
+
+## Experimental Results (on 3,000 test images)
+
+| Model | Input | Selected Hyperparameters | Training Time | Test Accuracy | Macro F1-Score |
 | :--- | :---: | :--- | :---: | :---: | :---: |
-| **Random Forest** | 1D (`1024`) | `n_estimators=300`, `max_depth=None`, `max_features=0.1` | 33,0 s | 81,20 % | 81,1 % |
-| **MLP** | 1D (`1024`) | `hidden_layer_sizes=(256, 128)`, `alpha=1e-4`, `lr=0.003` | 14,9 s | 87,67 % | 87,8 % |
-| **SVM (RBF)** | 1D (`1024`) | `kernel='rbf'`, `C=10`, `gamma='scale'` | 35,1 s | 87,97 % | 87,9 % |
-| **CNN (2D)** | 2D (`32×32×1`) | 2×(`Conv2D` + `MaxPool`), `Dense(128)`, `dropout=0.2`, SGD (`lr=0.02`, `batch=32`) | 175,0 s | **97,60 %** | **97,6 %** |
+| **Random Forest** | 1D (`1024`) | `n_estimators=300`, `max_depth=None`, `max_features=0.1` | 33.0 s | 81.20% | 81.1% |
+| **MLP** | 1D (`1024`) | `hidden_layer_sizes=(256, 128)`, `alpha=1e-4`, `lr=0.003` | 14.9 s | 87.67% | 87.8% |
+| **SVM (RBF)** | 1D (`1024`) | `kernel='rbf'`, `C=10`, `gamma='scale'` | 35.1 s | 87.97% | 87.9% |
+| **CNN (2D)** | 2D (`32×32×1`) | 2×(`Conv2D` + `MaxPool`), `Dense(128)`, `dropout=0.2`, SGD (`lr=0.02`, `batch=32`) | 175.0 s | **97.60%** | **97.6%** |
 
-> Le passage de vecteurs 1D à une architecture convolutive 2D divise le nombre d'erreurs par 5 sur le jeu de test (**72 erreurs** contre **361** pour le SVM).
+> Switching from 1D flattened vectors to a 2D convolutional architecture reduces the error count by a factor of 5 on the test set (**72 errors** vs. **361** for the SVM).
 
-### Matrice de confusion du meilleur modèle (CNN 2D)
+### Confusion Matrix of the Best Model (2D CNN)
 
-![Matrice de confusion du CNN 2D](../results/confusion_cnn.png)
-
----
-
-## Stack technique
-
-- **Langage :** Python 3.11
-- **Machine Learning :** `scikit-learn` (Random Forest, MLP, SVM, `GridSearchCV`)
-- **Deep Learning :** `Keras` / `TensorFlow` (CNN 2D, SGD avec momentum)
-- **Traitement d'images & données :** `Pillow` (redimensionnement 32×32 Lanczos), `NumPy`, `Pandas`
-- **Visualisation :** `Matplotlib`, `Seaborn`
-- **Rapport scientifique :** PDF ([Machine_learning - Rapport - Halepidis_Lion.pdf](../Machine_learning%20-%20Rapport%20-%20Halepidis_Lion.pdf), rédigé en LaTeX)
+![2D CNN Confusion Matrix](../results/confusion_cnn.png)
 
 ---
 
-## Structure du projet
+## Tech Stack
+
+- **Language:** Python 3.11
+- **Machine Learning:** `scikit-learn` (Random Forest, MLP, SVM, `GridSearchCV`)
+- **Deep Learning:** `Keras` / `TensorFlow` (2D CNN, SGD with momentum)
+- **Image & Data Processing:** `Pillow` (32×32 Lanczos resizing), `NumPy`, `Pandas`
+- **Visualization:** `Matplotlib`, `Seaborn`
+- **Scientific Report:** PDF ([Machine_learning - Rapport - Halepidis_Lion.pdf](../Machine_learning%20-%20Rapport%20-%20Halepidis_Lion.pdf), written in LaTeX)
+
+---
+
+## Project Structure
 
 ```text
 chinese-mnist-classification/
-├── projet_ml_halepidis_lion.py              # Pipeline complet : prétraitement, GridSearch, entraînement et évaluation
-├── Chinese_MNIST.py                         # Script de génération de l'aperçu des 15 classes
-├── requirements.txt                         # Dépendances Python
-├── Machine_learning - Rapport - Halepidis_Lion.pdf  # Rapport final d'analyse
-├── results/                                 # Aperçu du dataset et matrices de confusion générées
+├── projet_ml_halepidis_lion.py              # Full pipeline: preprocessing, GridSearch, training, and evaluation
+├── Chinese_MNIST.py                         # Script to generate the 15-class dataset preview
+├── requirements.txt                         # Python dependencies
+├── Machine_learning - Rapport - Halepidis_Lion.pdf  # Final analysis report
+├── results/                                 # Dataset preview and generated confusion matrices
 │   ├── apercu_dataset.png
 │   ├── confusion_random_forest.png
 │   ├── confusion_mlp.png
@@ -60,36 +60,36 @@ chinese-mnist-classification/
 
 ---
 
-## Installation et exécution
+## Setup and Usage
 
-1. **Cloner le dépôt :**
+1. **Clone the repository:**
    ```bash
-   git clone https://github.com/hleo1304/chinese-mnist-classification.git
+   git clone [https://github.com/hleo1304/chinese-mnist-classification.git](https://github.com/hleo1304/chinese-mnist-classification.git)
    cd chinese-mnist-classification
    ```
 
-2. **Créer un environnement virtuel et installer les dépendances :**
+2. **Create a virtual environment and install dependencies:**
    ```bash
    python -m venv .venv
-   # Windows (PowerShell) :
+   # Windows (PowerShell):
    .venv\Scripts\Activate.ps1
-   # Linux / macOS :
+   # Linux / macOS:
    source .venv/bin/activate
 
    pip install -r requirements.txt
    ```
 
-3. **Télécharger les données :**
-   Télécharge le jeu de données [Chinese MNIST sur Kaggle](https://www.kaggle.com/datasets/gpreda/chinese-mnist), puis place `chinese_mnist.csv` et le dossier `data/` (contenant les 15 000 images `.jpg`) à la racine du projet.
+3. **Download the dataset:**
+   Download the [Chinese MNIST dataset on Kaggle](https://www.kaggle.com/datasets/gpreda/chinese-mnist), then place `chinese_mnist.csv` and the `data/` folder (containing the 15,000 `.jpg` images) at the root of the project.
 
-4. **Lancer le pipeline complet :**
+4. **Run the full pipeline:**
    ```bash
    python projet_ml_halepidis_lion.py
    ```
-   Les 4 matrices de confusion seront générées automatiquement dans le dossier `results/`.
+   All 4 confusion matrices will be automatically generated in the `results/` directory.
 
 ---
 
-## Auteurs
+## Authors
 
-- **Léo Halepidis** & **Maxence Lion** — Projet de Machine Learning (Bachelier Ingénieur Civil, UMONS)
+- **Léo Halepidis** & **Maxence Lion** — Machine Learning Project (Bachelor of Engineering, UMONS)
