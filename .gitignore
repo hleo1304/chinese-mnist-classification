@@ -23,7 +23,8 @@ test.py
 result.txt
 Projets_ML.pdf
 
-# Fichiers temporaires LaTeX
+# Sources et fichiers temporaires LaTeX (seul le PDF final est publié)
+*.tex
 *.aux
 *.log
 *.out

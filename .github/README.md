@@ -36,7 +36,7 @@ Ce projet met en évidence les limites de l'aplatissement 1D des images sur les 
 - **Deep Learning :** `Keras` / `TensorFlow` (CNN 2D, SGD avec momentum)
 - **Traitement d'images & données :** `Pillow` (redimensionnement 32×32 Lanczos), `NumPy`, `Pandas`
 - **Visualisation :** `Matplotlib`, `Seaborn`
-- **Rapport scientifique :** LaTeX (`rapport_final.tex`)
+- **Rapport scientifique :** PDF ([Machine_learning - Rapport - Halepidis_Lion.pdf](../Machine_learning%20-%20Rapport%20-%20Halepidis_Lion.pdf), rédigé en LaTeX)
 
 ---
 
@@ -44,11 +44,11 @@ Ce projet met en évidence les limites de l'aplatissement 1D des images sur les 
 
 ```text
 chinese-mnist-classification/
-├── projet_ml_halepidis_lion.py   # Pipeline complet : prétraitement, GridSearch, entraînement et évaluation
-├── Chinese_MNIST.py              # Script de génération de l'aperçu des 15 classes
-├── requirements.txt              # Dépendances Python
-├── rapport_final.tex             # Source LaTeX du rapport d'analyse
-├── results/                      # Aperçu du dataset et matrices de confusion générées
+├── projet_ml_halepidis_lion.py              # Pipeline complet : prétraitement, GridSearch, entraînement et évaluation
+├── Chinese_MNIST.py                         # Script de génération de l'aperçu des 15 classes
+├── requirements.txt                         # Dépendances Python
+├── Machine_learning - Rapport - Halepidis_Lion.pdf  # Rapport final d'analyse
+├── results/                                 # Aperçu du dataset et matrices de confusion générées
 │   ├── apercu_dataset.png
 │   ├── confusion_random_forest.png
 │   ├── confusion_mlp.png
